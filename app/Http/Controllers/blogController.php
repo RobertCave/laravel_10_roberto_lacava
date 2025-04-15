@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 
@@ -15,28 +16,39 @@ class blogController extends Controller
 
 
 
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
 
-        // // // // Creazione oggetto $blog
-        $post = new Posts();
-
         // Spostamento dei dati all'oggetto presi dal form
-        $post->titolo = $request->titolo;
-        $post->descrizione = $request->descrizione;
-        $post->testo = $request->testo;
-        $post->immagine = "/images/blog-post.png";
-        $post->categoria = $request->categoria;
-        $post->autore = $request->autore;
+        $titolo = $request->titolo;
+        $descrizione = $request->descrizione;
+        $testo = $request->testo;
 
-    
+        if ($request->file('immagine')) {
+            $immagine = $request->file('immagine')->store('/images') ;
+        } else {
+            $immagine = "/images/blog-post.png";
+        }
+        
 
-// // // // Salvataggio del prodotto nel DATABASE
 
-                $post->save();
+        $categoria = $request->categoria;
+        $autore = $request->autore;
+  
+
+        Posts::create([
+            'titolo' => $titolo,
+            'descrizione' => $descrizione,
+            'testo' => $testo,
+            'immagine' => $immagine,
+            'categoria' => $categoria,
+            'autore' => $autore,
+
+        ]);
 
         // //Cosa fa dopo aver salvato sul database ?
-        return redirect()->back();
+        return redirect()->route('homepage')->with('successMessage', 'Hai correttamente inserito in database');
+
 
     }
 

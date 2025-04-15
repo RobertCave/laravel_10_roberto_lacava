@@ -1,12 +1,26 @@
- Selfwork Modelli e Migrazioni
+
+
+Ondemand Laravel Database
+
+
+Selfwork Storage & Validation Rules
+
+
 Traccia
 
-    Installare Mysql e TablePlus
-    Creare un nuovo blog con un database, rispettando i seguenti punti:
-        Scaffolding base (PublicController, Components, Bootstrap c/Vite)
-        Homepage
-        Modello + Controller + Migrazione
-        Form di creazione
-        Salvataggio nel DB
-        Pagina con tutti gli oggetti creati
-    Pushare online laravel_09_nome_cognome
+    Implementare su laravel_09:
+        Salvataggio nel DB di un'immagine
+        Validation Rules
+
+
+
+
+Documentazione
+Laravel - The PHP Framework For Web Artisans Salvataggio File
+https://laravel.com/docs/12.x/filesystem#file-uploads
+
+
+Laravel - The PHP Framework For Web Artisans Validazione di un form creando una request custom
+https://laravel.com/docs/12.x/validation#form-request-validation
+
+
